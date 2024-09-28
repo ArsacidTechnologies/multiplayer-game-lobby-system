@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerService", "PlayerService\PlayerService.csproj", "{8477349A-0E51-4786-BEA9-C76738B7CF98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerService", "PlayerService\PlayerService.csproj", "{8477349A-0E51-4786-BEA9-C76738B7CF98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerService.Tests", "PlayerService.Tests\PlayerService.Tests.csproj", "{F888A575-CD96-4B0D-BF03-F3F3D3E1BFAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8477349A-0E51-4786-BEA9-C76738B7CF98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8477349A-0E51-4786-BEA9-C76738B7CF98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8477349A-0E51-4786-BEA9-C76738B7CF98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F888A575-CD96-4B0D-BF03-F3F3D3E1BFAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F888A575-CD96-4B0D-BF03-F3F3D3E1BFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F888A575-CD96-4B0D-BF03-F3F3D3E1BFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F888A575-CD96-4B0D-BF03-F3F3D3E1BFAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
