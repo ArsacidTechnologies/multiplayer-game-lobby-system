@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\lobbyservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|solutionrelative:lobbyservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\lobbyservice\\services\\lobbyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|solutionrelative:lobbyservice\\services\\lobbyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\lobbyservice\\repositories\\lobbyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|solutionrelative:lobbyservice\\repositories\\lobbyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CE189C-DFDE-4D04-8B13-40888CF106F0}|SharedUtils\\SharedUtils.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\sharedutils\\sharedutils\\rediskeyhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{50CE189C-DFDE-4D04-8B13-40888CF106F0}|SharedUtils\\SharedUtils.csproj|solutionrelative:sharedutils\\sharedutils\\rediskeyhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{50CE189C-DFDE-4D04-8B13-40888CF106F0}|SharedUtils\\SharedUtils.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\sharedutils\\sharedutils.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{50CE189C-DFDE-4D04-8B13-40888CF106F0}|SharedUtils\\SharedUtils.csproj|solutionrelative:sharedutils\\sharedutils.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SharedUtils",
+              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\SharedUtils\\SharedUtils.csproj",
+              "RelativeDocumentMoniker": "SharedUtils\\SharedUtils.csproj",
+              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\SharedUtils\\SharedUtils.csproj",
+              "RelativeToolTip": "SharedUtils\\SharedUtils.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-28T22:20:47.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RedisKeyHelper.cs",
+              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\SharedUtils\\SharedUtils\\RedisKeyHelper.cs",
+              "RelativeDocumentMoniker": "SharedUtils\\SharedUtils\\RedisKeyHelper.cs",
+              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\SharedUtils\\SharedUtils\\RedisKeyHelper.cs",
+              "RelativeToolTip": "SharedUtils\\SharedUtils\\RedisKeyHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T22:20:25.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LobbyRepository.cs",
+              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\Repositories\\LobbyRepository.cs",
+              "RelativeDocumentMoniker": "LobbyService\\Repositories\\LobbyRepository.cs",
+              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\Repositories\\LobbyRepository.cs",
+              "RelativeToolTip": "LobbyService\\Repositories\\LobbyRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T22:19:58.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "LobbyService\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\Properties\\launchSettings.json",
-              "RelativeToolTip": "LobbyService\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-28T17:41:10.096Z",
+              "Title": "LobbyService.cs",
+              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\Services\\LobbyService.cs",
+              "RelativeDocumentMoniker": "LobbyService\\Services\\LobbyService.cs",
+              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\Services\\LobbyService.cs",
+              "RelativeToolTip": "LobbyService\\Services\\LobbyService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-28T22:19:57.317Z",
               "EditorCaption": ""
             }
           ]

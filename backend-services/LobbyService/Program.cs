@@ -1,6 +1,19 @@
+using lobby_service.Repositories;
+using lobby_service.Services;
+using StackExchange.Redis;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
+
+var redisConnectionString = builder.Configuration.GetSection("Redis:ConnectionString").Value;
+
+//Redis connection
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+
+// Add services to the container
+builder.Services.AddScoped<ILobbyRepository, LobbyRepository>();
+builder.Services.AddScoped<ILobbyService, LobbyService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
