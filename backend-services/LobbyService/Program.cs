@@ -1,6 +1,9 @@
 using lobby_service.Repositories;
 using lobby_service.Services;
+using RedLockNet.SERedis;
+using RedLockNet.SERedis.Configuration;
 using StackExchange.Redis;
+using RedLockNet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,21 @@ var redisConnectionString = builder.Configuration.GetSection("Redis:ConnectionSt
 
 //Redis connection
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+
+
+// Register Redlock
+builder.Services.AddSingleton<IDistributedLockFactory>(sp =>
+{
+    var redisConnection = sp.GetRequiredService<IConnectionMultiplexer>();
+
+    var redLockMultiplexers = new List<RedLockMultiplexer>
+    {
+        new RedLockMultiplexer(redisConnection)  // Wrap the connection in RedLockMultiplexer
+    };
+
+    return RedLockFactory.Create(redLockMultiplexers);
+});
+
 
 // Add services to the container
 builder.Services.AddScoped<ILobbyRepository, LobbyRepository>();

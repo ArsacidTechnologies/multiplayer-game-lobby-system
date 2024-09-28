@@ -1,54 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{F888A575-CD96-4B0D-BF03-F3F3D3E1BFAF}|PlayerService.Tests\\PlayerService.Tests.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\playerservice.tests\\services\\playerservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F888A575-CD96-4B0D-BF03-F3F3D3E1BFAF}|PlayerService.Tests\\PlayerService.Tests.csproj|solutionrelative:playerservice.tests\\services\\playerservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8477349A-0E51-4786-BEA9-C76738B7CF98}|PlayerService\\PlayerService.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\playerservice\\repositories\\playerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8477349A-0E51-4786-BEA9-C76738B7CF98}|PlayerService\\PlayerService.csproj|solutionrelative:playerservice\\repositories\\playerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlayerServiceTests.cs",
-              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\PlayerService.Tests\\Services\\PlayerServiceTests.cs",
-              "RelativeDocumentMoniker": "PlayerService.Tests\\Services\\PlayerServiceTests.cs",
-              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\PlayerService.Tests\\Services\\PlayerServiceTests.cs",
-              "RelativeToolTip": "PlayerService.Tests\\Services\\PlayerServiceTests.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAAAcAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T22:37:34.03Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerRepository.cs",
-              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\PlayerService\\Repositories\\PlayerRepository.cs",
-              "RelativeDocumentMoniker": "PlayerService\\Repositories\\PlayerRepository.cs",
-              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\PlayerService\\Repositories\\PlayerRepository.cs",
-              "RelativeToolTip": "PlayerService\\Repositories\\PlayerRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T22:28:22.122Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

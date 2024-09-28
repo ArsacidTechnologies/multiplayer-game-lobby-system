@@ -19,7 +19,12 @@ namespace lobby_service.Repositories
         public async Task AddLobbyAsync(Lobby lobby)
         {
             var serializedLobby = JsonSerializer.Serialize(lobby);
+
+            // Save the individual lobby under its own key (if needed)
             await _db.HashSetAsync(RedisKeyHelper.GetLobbyKey(lobby.LobbyId), lobby.LobbyId, serializedLobby);
+
+            // Also, store the lobby in the "all lobbies" hash for collective access
+            await _db.HashSetAsync(RedisKeyHelper.GetAllLobbiesKey(), lobby.LobbyId, serializedLobby);
         }
 
         public async Task<Lobby> GetLobbyAsync(string lobbyId)
@@ -36,7 +41,9 @@ namespace lobby_service.Repositories
         public async Task<IEnumerable<Lobby>> GetLobbiesAsync()
         {
             var lobbies = new List<Lobby>();
-            var allLobbyEntries = await _db.HashGetAllAsync("lobbies");
+
+            // Retrieve all lobbies from the collective Redis key
+            var allLobbyEntries = await _db.HashGetAllAsync(RedisKeyHelper.GetAllLobbiesKey());
 
             foreach (var lobbyEntry in allLobbyEntries)
             {
@@ -49,7 +56,6 @@ namespace lobby_service.Repositories
 
             return lobbies;
         }
-
         public async Task UpdateLobbyAsync(Lobby lobby)
         {
             var serializedLobby = JsonSerializer.Serialize(lobby);

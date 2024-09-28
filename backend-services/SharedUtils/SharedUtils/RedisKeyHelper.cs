@@ -36,5 +36,11 @@ namespace SharedUtils.Utils
         {
             return $"{UserLobbyPrefix}{playerId}:lobby";
         }
+
+        // Generate the Redis key for all lobbies
+        public static string GetAllLobbiesKey()
+        {
+            return $"{LobbyPrefix}all";
+        }
     }
 }
