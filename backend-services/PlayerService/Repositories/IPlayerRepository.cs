@@ -1,11 +1,12 @@
 using player_service.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace player_service.Repositories
 {
     public interface IPlayerRepository
     {
-        void AddPlayer(Player player);
-        IEnumerable<Player> GetPlayers();
+        Task AddPlayerAsync(Player player);
+        Task<IEnumerable<Player>> GetPlayersAsync();
     }
 }

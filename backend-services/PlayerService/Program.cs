@@ -1,7 +1,12 @@
 using player_service.Repositories;
 using player_service.Services;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var redisConnectionString = builder.Configuration.GetSection("Redis:ConnectionString").Value;
+//Redis connection
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 
 // Add services to the container.
 builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();

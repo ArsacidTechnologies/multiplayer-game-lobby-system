@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using player_service.Services;
+using System.Threading.Tasks;
+using player_service.DTOs;
 
 namespace player_service.Controllers
 {
@@ -16,17 +18,23 @@ namespace player_service.Controllers
 
         // POST api/player
         [HttpPost]
-        public IActionResult CreatePlayer([FromQuery] string playerName)
+        public async Task<IActionResult> CreatePlayer([FromQuery] PlayerDto playerDto)
         {
-            var player = _playerService.CreatePlayer(playerName);
-            return Ok(player);
+            try
+            {
+                var player = await _playerService.CreatePlayerAsync(playerDto.PlayerName);
+                return Ok(player);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
-
         // GET api/player
         [HttpGet]
-        public IActionResult GetPlayers()
+        public async Task<IActionResult> GetPlayers()
         {
-            var players = _playerService.GetPlayers();
+            var players = await _playerService.GetPlayersAsync();
             return Ok(players);
         }
     }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+
 namespace player_service.Services
 {
     public class PlayerService : IPlayerService
@@ -15,22 +17,36 @@ namespace player_service.Services
             _playerRepository = playerRepository;
         }
 
-        public Player CreatePlayer(string playerName = null)
+        public async Task<Player> CreatePlayerAsync(string playerName = null)
         {
+            if (!string.IsNullOrEmpty(playerName))
+            {
+                var existingPlayers = await _playerRepository.GetPlayersAsync();
+
+                // Check if the player name is already taken
+                foreach (var player in existingPlayers)
+                {
+                    if (player.Name == playerName)
+                    {
+                        throw new ArgumentException("The player name is already taken.");
+                    }
+                }
+            }
+
             string uniqueId = GenerateUniqueId();
 
-            var player = new Player
+            var newPlayer = new Player
             {
-                Name = playerName ?? uniqueId
+                Name = playerName ?? uniqueId // If playerName is null, use generated ID
             };
 
-            _playerRepository.AddPlayer(player);
-            return player;
+            await _playerRepository.AddPlayerAsync(newPlayer);
+            return newPlayer;
         }
 
-        public IEnumerable<Player> GetPlayers()
+        public async Task<IEnumerable<Player>> GetPlayersAsync()
         {
-            return _playerRepository.GetPlayers();
+            return await _playerRepository.GetPlayersAsync();
         }
 
         private string GenerateUniqueId()

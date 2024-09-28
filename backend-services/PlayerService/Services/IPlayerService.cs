@@ -1,11 +1,12 @@
 using player_service.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace player_service.Services
 {
     public interface IPlayerService
     {
-        Player CreatePlayer(string playerName = null);
-        IEnumerable<Player> GetPlayers();
+        Task<Player> CreatePlayerAsync(string playerName = null);
+        Task<IEnumerable<Player>> GetPlayersAsync();
     }
 }
