@@ -18,4 +18,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SharedUtils\SharedUtils.csproj" />
+  </ItemGroup>
+
 </Project>
