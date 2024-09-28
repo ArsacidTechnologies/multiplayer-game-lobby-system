@@ -115,3 +115,29 @@ curl -X GET "https://localhost:7008/api/player"
   }
 ]
 ```
+
+## Unit Tests
+
+### Overview
+
+Unit tests are implemented using **xUnit** with **Moq** for mocking dependencies. The tests ensure that the key features of `PlayerService` behave as expected.
+
+### Test Cases:
+
+##### **CreatePlayerAsync_WithValidName_ShouldCreatePlayer** :
+
+- Validates that a player is created with the specified name and is added to the repository.
+
+##### **CreatePlayerAsync_WithDuplicateName_ShouldThrowArgumentException** :
+
+- Ensures that creating a player with an already taken name results in an exception.
+
+##### **CreatePlayerAsync_WithNoName_ShouldGenerateUniqueId** :
+
+- Ensures that if no player name is provided, a unique name prefixed with `"Guest_"` is generated.
+
+##### **GetPlayersAsync_ShouldReturnListOfPlayers** :
+
+- Validates that the service returns the correct list of players from the repository.
+
+![1727544475597](image/README/1727544475597.png)
