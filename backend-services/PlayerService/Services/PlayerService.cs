@@ -5,6 +5,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace player_service.Services
 {
@@ -37,7 +38,8 @@ namespace player_service.Services
 
             var newPlayer = new Player
             {
-                Name = playerName ?? uniqueId // If playerName is null, use generated ID
+                Name = playerName ?? $"Guest_{uniqueId}" // Prefix with "Guest_"
+                                                                              
             };
 
             await _playerRepository.AddPlayerAsync(newPlayer);
