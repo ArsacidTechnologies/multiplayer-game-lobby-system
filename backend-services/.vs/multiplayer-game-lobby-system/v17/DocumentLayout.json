@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|c:\\gh\\multiplayer-game-lobby-system\\backend-services\\lobbyservice\\lobbyservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F394D98C-977F-4069-B36B-9FF7FDC2438D}|LobbyService\\LobbyService.csproj|solutionrelative:lobbyservice\\lobbyservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LobbyService",
+              "DocumentMoniker": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\LobbyService.csproj",
+              "RelativeDocumentMoniker": "LobbyService\\LobbyService.csproj",
+              "ToolTip": "C:\\GH\\multiplayer-game-lobby-system\\backend-services\\LobbyService\\LobbyService.csproj",
+              "RelativeToolTip": "LobbyService\\LobbyService.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-29T10:02:22.085Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

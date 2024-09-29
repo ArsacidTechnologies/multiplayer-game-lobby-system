@@ -1,0 +1,60 @@
+version: "3.4"
+
+services:
+  rabbitmq:
+    container_name: rabbitmq-mgls
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 50
+    networks:
+      - db
+  redis:
+    container_name: redis-mgls
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis-data:/data
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - db
+  lobbyservice:
+    image: ${DOCKER_REGISTRY-}lobbyservice
+    build:
+      context: .
+      dockerfile: LobbyService/Dockerfile
+    depends_on:
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - db
+  playerservice:
+    image: ${DOCKER_REGISTRY-}playerservice
+    build:
+      context: .
+      dockerfile: PlayerService/Dockerfile
+    depends_on:
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - db
+networks:
+  gw:
+    driver: bridge
+  db:
+    driver: bridge

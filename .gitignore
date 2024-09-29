@@ -406,3 +406,4 @@ yarn-error.log*
 
 # idea files
 .idea
+*/redis-data
