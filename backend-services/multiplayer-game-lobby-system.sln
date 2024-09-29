@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerService.Tests", "Play
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LobbyService", "LobbyService\LobbyService.csproj", "{F394D98C-977F-4069-B36B-9FF7FDC2438D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedUtils", "SharedUtils\SharedUtils.csproj", "{50CE189C-DFDE-4D04-8B13-40888CF106F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedUtils", "SharedUtils\SharedUtils.csproj", "{50CE189C-DFDE-4D04-8B13-40888CF106F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyService.Tests", "LobbyService.Tests\LobbyService.Tests.csproj", "{D8A9BD65-A4F9-48CC-B7C5-6481760F7BAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{50CE189C-DFDE-4D04-8B13-40888CF106F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50CE189C-DFDE-4D04-8B13-40888CF106F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50CE189C-DFDE-4D04-8B13-40888CF106F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A9BD65-A4F9-48CC-B7C5-6481760F7BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A9BD65-A4F9-48CC-B7C5-6481760F7BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A9BD65-A4F9-48CC-B7C5-6481760F7BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A9BD65-A4F9-48CC-B7C5-6481760F7BAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

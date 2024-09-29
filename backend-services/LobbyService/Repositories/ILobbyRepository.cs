@@ -10,5 +10,6 @@ namespace lobby_service.Repositories
         Task<Lobby> GetLobbyAsync(string lobbyId);
         Task<IEnumerable<Lobby>> GetLobbiesAsync();
         Task UpdateLobbyAsync(Lobby lobby);
+        Task<Lobby> GetLobbyByNameAsync(string lobbyName);
     }
 }
