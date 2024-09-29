@@ -55,12 +55,16 @@ multiplayer-game-lobby-system/
 
 ```
 
-## Requirements
 
-- **Language/Framework:** .NET Core 8.
-- **In-Memory System:** Redis for state management.
-- **EDA**: Rabbitmq for message brooker and event driven feature.
-- **Clustered Environment:** Docker, Kubernetes.
+## Technology Stack
+
+* **.NET Core 8** : The main framework for building the REST API services.
+* **Redis** : For in-memory state management across clusters.
+* **RabbitMQ** : Message broker for the event-driven architecture (EDA).
+* **Ocelot API Gateway** : For handling API routing across different services.
+* **Docker & Kubernetes** : Containerization and orchestration to deploy services in a scalable manner.
+* **SignalR** : Optional real-time communication using WebSockets.
+* **OpenSSL** : For generating HTTPS certificates for secure communication.
 
 ## openssl certificate generate for HTTPS:
 
