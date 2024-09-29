@@ -58,31 +58,33 @@ namespace lobby_service.Services
                         throw new ArgumentException("Player does not exist.");
                     }
 
-                    // Check if player is already in a lobby
+                    // Check if the player is already in a lobby
                     var existingLobbyId = await _db.StringGetAsync(RedisKeyHelper.GetUserLobbyKey(playerId));
                     if (!string.IsNullOrEmpty(existingLobbyId))
                     {
-                        throw new InvalidOperationException("User is already in another lobby.");
+                        // If the player is already in a lobby, remove them from the old lobby
+                        var oldLobbyKey = RedisKeyHelper.GetLobbyPlayersKey(existingLobbyId);
+                        _ = transaction.SetRemoveAsync(oldLobbyKey, playerId);
                     }
 
-                    // Get the lobby
+                    // Get the new lobby
                     var lobby = await _lobbyRepository.GetLobbyAsync(lobbyId);
                     if (lobby == null)
                     {
                         throw new ArgumentException("Lobby not found.");
                     }
 
-                    // Check if the lobby has enough capacity
+                    // Check if the new lobby has enough capacity
                     var lobbyPlayerCount = await _db.SetLengthAsync(RedisKeyHelper.GetLobbyPlayersKey(lobbyId));
                     if (lobbyPlayerCount >= lobby.Capacity)
                     {
                         throw new InvalidOperationException("Lobby is full.");
                     }
 
-                    // Add player to the Redis set representing the lobby in a transaction
+                    // Add the player to the new lobby in a transaction
                     _ = transaction.SetAddAsync(RedisKeyHelper.GetLobbyPlayersKey(lobbyId), playerId);
 
-                    // Track player's membership in Redis in a transaction
+                    // Track player's membership in Redis in a transaction (set the player's new lobby)
                     _ = transaction.StringSetAsync(RedisKeyHelper.GetUserLobbyKey(playerId), lobbyId);
 
                     // Execute the transaction

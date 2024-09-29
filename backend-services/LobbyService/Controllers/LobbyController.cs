@@ -41,6 +41,26 @@ namespace lobby_service.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        // POST api/lobby/{lobbyId}/remove
+        [HttpPost("{lobbyId}/remove")]
+        public async Task<IActionResult> RemovePlayerFromLobby(string lobbyId, [FromQuery] string playerId)
+        {
+            try
+            {
+                await _lobbyService.RemovePlayerFromLobbyAsync(lobbyId, playerId);
+                return Ok(new { message = "Player removed from the lobby" });
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
         // GET api/lobby/{lobbyId}
         [HttpGet("{lobbyId}")]
         public async Task<IActionResult> GetLobbieAsync(string lobbyId)
