@@ -19,6 +19,7 @@ This is a simple multiplayer game lobby system built using a REST API. The syste
 
 ## Project Structure:
 
+```
 multiplayer-game-lobby-system/
 │
 └─── backend-services/
@@ -26,24 +27,33 @@ multiplayer-game-lobby-system/
      │    ├─── PlayerService.csproj
      │    ├─── Controllers/
      │    ├─── Services/
+     │    ├─── Repositories/
      │    └─── Models/
      │
      ├─── LobbyService/
      │    ├─── LobbyService.csproj
      │    ├─── Controllers/
      │    ├─── Services/
+     │    ├─── Repositories/
      │    └─── Models/
      │
      ├─── NotificationService/
      │    ├─── NotificationService.csproj
      │    ├─── Controllers/
-     │    └─── SignalR/
+     │    ├─── SignalR/
+     │    └─── Events/
      │
      ├─── ApiGateway/
      │    ├─── ocelot.json
      │    ├─── ApiGateway.csproj
      │
+     ├─── SharedUtils/
+     │    ├─── Events/
+     │    ├─── RedisKeyHelper.cs
+     │
      └─── Redis (for in-memory state)
+
+```
 
 ## Requirements
 
@@ -51,13 +61,6 @@ multiplayer-game-lobby-system/
 - **In-Memory System:** Redis for state management.
 - **EDA**: Rabbitmq for message brooker and event driven feature.
 - **Clustered Environment:** Docker, Kubernetes.
-
-
-
-
-
-
-
 
 ## openssl certificate generate for HTTPS:
 
