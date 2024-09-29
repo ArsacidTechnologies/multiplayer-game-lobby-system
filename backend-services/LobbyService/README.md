@@ -1,5 +1,3 @@
-
-
 ### **Lobby Joining Rules**
 
 A user can join a lobby under the following conditions:
@@ -10,7 +8,6 @@ A user can join a lobby under the following conditions:
 ### **Exceptions**
 
 * **User Already in a Lobby** : If a user is already a member of a lobby, they should not be allowed to join another lobby. This scenario must be handled to prevent a user from being part of multiple lobbies at the same time.
-
 
 ### **Redis Key Structure** :
 
@@ -24,7 +21,6 @@ lobby:lobby1:players => { "player123", "player456" }
 
 ```
 
-
  **User’s Lobby** :
 
 * A Redis **string** where the key is `user:<playerId>:lobby` and the value is the lobby ID.
@@ -36,3 +32,7 @@ Example:
 user:player123:lobby => "lobby1"
 
 ```
+
+## Integration Test Result:
+
+![1727601979081](image/README/1727601979081.png)

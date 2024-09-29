@@ -61,5 +61,21 @@ namespace lobby_service.Repositories
             var serializedLobby = JsonSerializer.Serialize(lobby);
             await _db.HashSetAsync(RedisKeyHelper.GetLobbyKey(lobby.LobbyId), lobby.LobbyId, serializedLobby);
         }
+
+        public async Task<Lobby> GetLobbyByNameAsync(string lobbyName)
+        {
+            var allLobbies = await GetLobbiesAsync();
+
+            // Check if any lobby has the same name
+            foreach (var lobby in allLobbies)
+            {
+                if (lobby.LobbyName == lobbyName)
+                {
+                    return lobby;  // Return the found lobby
+                }
+            }
+
+            return null;  // Return null if no lobby with the same name is found
+        }
     }
 }

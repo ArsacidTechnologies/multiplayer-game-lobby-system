@@ -25,6 +25,14 @@ namespace lobby_service.Services
 
         public async Task<Lobby> CreateLobbyAsync(string lobbyName)
         {
+            // Check if a lobby with the same name already exists
+            var existingLobby = await _lobbyRepository.GetLobbyByNameAsync(lobbyName);
+            if (existingLobby != null)
+            {
+                throw new InvalidOperationException("Lobby name already exists.");
+            }
+
+            // If the lobby name is unique, proceed to create a new lobby
             var lobby = new Lobby
             {
                 LobbyId = Guid.NewGuid().ToString(),

@@ -19,8 +19,15 @@ namespace lobby_service.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateLobby([FromQuery] string lobbyName)
         {
-            var lobby = await _lobbyService.CreateLobbyAsync(lobbyName);
-            return Ok(lobby);
+            try
+            {
+                var lobby = await _lobbyService.CreateLobbyAsync(lobbyName);
+                return Ok(lobby);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         // POST api/lobby/{lobbyId}/join
