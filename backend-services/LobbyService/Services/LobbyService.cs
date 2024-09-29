@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SharedUtils.Utils;
 using RedLockNet;
+using MassTransit;
+using SharedUtils.Events;
 
 namespace lobby_service.Services
 {
@@ -15,12 +17,14 @@ namespace lobby_service.Services
         private readonly ILobbyRepository _lobbyRepository;
         private readonly IDatabase _db;
         private readonly IDistributedLockFactory _lockFactory;
-
-        public LobbyService(ILobbyRepository lobbyRepository, IConnectionMultiplexer redis, IDistributedLockFactory lockFactory)
+        private readonly IBus _bus;
+        public LobbyService(ILobbyRepository lobbyRepository, IConnectionMultiplexer redis, IDistributedLockFactory lockFactory, IBus bus)
         {
             _lobbyRepository = lobbyRepository;
             _db = redis.GetDatabase();
             _lockFactory = lockFactory;
+            _bus = bus;
+
         }
 
         public async Task<Lobby> CreateLobbyAsync(string lobbyName)
@@ -106,6 +110,10 @@ namespace lobby_service.Services
                     lobby.Players.Add(playerId);
                     await _lobbyRepository.UpdateLobbyAsync(lobby);
 
+                    // Publish the PlayerJoinedLobbyEvent using MassTransit
+                    var playerJoinedEvent = new PlayerJoinedLobbyEvent(playerId, lobbyId, lobby.LobbyName);
+                    await _bus.Publish(playerJoinedEvent);
+
                     return lobby;
                 }
                 else
@@ -115,7 +123,6 @@ namespace lobby_service.Services
                 }
             }
         }
-
         public async Task RemovePlayerFromLobbyAsync(string lobbyId, string playerId)
         {
             // Define the lock key for this lobby

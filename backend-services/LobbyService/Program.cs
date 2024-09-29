@@ -4,6 +4,7 @@ using RedLockNet.SERedis;
 using RedLockNet.SERedis.Configuration;
 using StackExchange.Redis;
 using RedLockNet;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,17 @@ builder.Services.AddSingleton<IDistributedLockFactory>(sp =>
     return RedLockFactory.Create(redLockMultiplexers);
 });
 
-
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+      {
+          h.Username("guest");
+          h.Password("guest");
+      });
+    });
+});
 // Add services to the container
 builder.Services.AddScoped<ILobbyRepository, LobbyRepository>();
 builder.Services.AddScoped<ILobbyService, LobbyService>();
