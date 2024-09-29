@@ -1,0 +1,6 @@
+@LobbyService_HostAddress = http://localhost:5055
+
+GET {{LobbyService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -5,6 +5,7 @@ using player_service.Services;
 using System.Threading.Tasks;
 using Xunit;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace player_service.Tests
 {
@@ -41,7 +42,7 @@ namespace player_service.Tests
         {
             // Arrange
             var playerName = "Mehran";
-            var existingPlayers = new[] { new Player { Name = playerName } };
+            var existingPlayers = new List<Player> { new Player { Name = playerName } };
             _mockPlayerRepository.Setup(repo => repo.GetPlayersAsync())
                 .ReturnsAsync(existingPlayers);
 
@@ -71,7 +72,7 @@ namespace player_service.Tests
         public async Task GetPlayersAsync_ShouldReturnListOfPlayers()
         {
             // Arrange
-            var players = new[]
+            var players = new List<Player>
             {
                 new Player { Name = "Mehran" },
                 new Player { Name = "Mehraneh" }
@@ -83,7 +84,7 @@ namespace player_service.Tests
             var result = await _playerService.GetPlayersAsync();
 
             // Assert
-            Assert.Equal(players.Length, result.Count());
+            Assert.Equal(players.Count, result.Count());
             Assert.Contains(result, p => p.Name == "Mehran");
             Assert.Contains(result, p => p.Name == "Mehraneh");
         }
