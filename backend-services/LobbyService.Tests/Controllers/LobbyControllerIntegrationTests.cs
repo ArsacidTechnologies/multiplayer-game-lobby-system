@@ -172,5 +172,88 @@ namespace lobby_service.IntegrationTests
             var errorResponse = JsonSerializer.Deserialize<Dictionary<string, string>>(errorResponseString);
             Assert.Equal("Lobby name already exists.", errorResponse["message"]);
         }
+
+        [Fact]
+        public async Task JoinLobby_HandlesConcurrentUsers_Correctly()
+        {
+            //Create a unique player using the PlayerService
+            var playerNames = new[] { $"Player_{Guid.NewGuid()}", $"Player_{Guid.NewGuid()}", $"Player_{Guid.NewGuid()}", $"Player_{Guid.NewGuid()}" };
+
+            //Create players concurrently
+            var playerIds = await Task.WhenAll(playerNames.Select(CreatePlayerAsync));
+
+            //Create a unique lobby using the LobbyService
+            var createdLobby = await CreateLobbyAsync($"TestLobby_{Guid.NewGuid()}");
+            var lobbyId = createdLobby.LobbyId;
+
+            //Define tasks for joining the lobby concurrently
+            var joinTasks = playerIds.Select(playerId =>
+                _lobbyClient.PostAsync($"/api/lobby/{lobbyId}/join?playerId={playerId}", null));
+
+            var joinResponses = await Task.WhenAll(joinTasks);
+
+            //Assert that all responses are successful
+            foreach (var joinResponse in joinResponses)
+            {
+                Assert.True(joinResponse.IsSuccessStatusCode, "One or more join requests failed");
+            }
+
+            //lobby now contains all players
+            var lobbyResponse = await _lobbyClient.GetAsync($"/api/lobby/{lobbyId}");
+            lobbyResponse.EnsureSuccessStatusCode();
+
+            var lobbyResponseString = await lobbyResponse.Content.ReadAsStringAsync();
+            var updatedLobby = JsonSerializer.Deserialize<Lobby>(lobbyResponseString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            Assert.Equal(playerIds.Length, updatedLobby.Players.Count);
+            foreach (var playerId in playerIds)
+            {
+                Assert.Contains(playerId, updatedLobby.Players);
+            }
+        }
+        [Fact]
+        public async Task JoinLobby_Allows64PlayersAndRejectsWhenFull()
+        {
+            //Create a lobby with the default capacity of 64 players
+            var lobbyName = $"TestLobby_{Guid.NewGuid()}";
+            var createdLobby = await CreateLobbyAsync(lobbyName);
+            var lobbyId = createdLobby.LobbyId;
+
+            //Create 64 players
+            var playerIds = new List<string>();
+            for (int i = 1; i <= 64; i++)
+            {
+                var playerId = await CreatePlayerAsync($"Player_{i}_{Guid.NewGuid()}");
+                playerIds.Add(playerId);
+            }
+
+            //Simulate 64 players joining the lobby concurrently
+            var joinTasks = playerIds.Select(playerId =>
+                _lobbyClient.PostAsync($"/api/lobby/{lobbyId}/join?playerId={playerId}", null)
+            );
+
+
+            var joinResponses = await Task.WhenAll(joinTasks);
+
+            //Assert that all 64 players joined successfully
+            foreach (var joinResponse in joinResponses)
+            {
+                joinResponse.EnsureSuccessStatusCode();  // All responses should be successful
+            }
+
+            //Create a 65th player who will attempt to join the full lobby
+            var extraPlayerId = await CreatePlayerAsync($"ExtraPlayer_{Guid.NewGuid()}");
+
+            //Try to join the lobby which should now be full
+            var fullLobbyResponse = await _lobbyClient.PostAsync($"/api/lobby/{lobbyId}/join?playerId={extraPlayerId}", null);
+
+            //Assert that the response is 400 BadRequest indicating the lobby is full
+            Assert.Equal(System.Net.HttpStatusCode.BadRequest, fullLobbyResponse.StatusCode);
+
+            var errorResponseString = await fullLobbyResponse.Content.ReadAsStringAsync();
+            var errorResponse = JsonSerializer.Deserialize<Dictionary<string, string>>(errorResponseString);
+            Assert.Equal("Lobby is full.", errorResponse["message"]);
+        }
+
     }
 }
