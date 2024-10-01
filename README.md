@@ -2,11 +2,13 @@
 
 ## Overview
 
-This is a simple multiplayer game lobby system built using a REST API. The system allows players to join a static lobby (`lobby_1`) and handles multiple requests across a clustered environment using Redis for in-memory state management.
+This is a simple multiplayer game lobby system built using a REST API. The system allows players to join a dynamic lobby (`lobby_1`) and handles multiple requests across a clustered environment using Redis for in-memory state management.
+
+![1727766535639](image/README/1727766535639.png)
 
 ## Features
 
-1. **Static Lobby Name:** The lobby name is `lobby_1`.
+1. **Dynamic Lobby Name:** The lobby name like `lobby_1`.
 2. **Player Lobby Joining:** Players can join the lobby using REST API.
 3. **Lobby Capacity:** The lobby can handle up to 64 players. Join requests are rejected once the lobby reaches full capacity.
 4. **Player Notifications:** Players are notified when they successfully join the lobby, with the current number of players.
@@ -55,16 +57,15 @@ multiplayer-game-lobby-system/
 
 ```
 
-
 ## Technology Stack
 
-* **.NET Core 8** : The main framework for building the REST API services.
-* **Redis** : For in-memory state management across clusters.
-* **RabbitMQ** : Message broker for the event-driven architecture (EDA).
-* **Ocelot API Gateway** : For handling API routing across different services.
-* **Docker & Kubernetes** : Containerization and orchestration to deploy services in a scalable manner.
-* **SignalR** : Optional real-time communication using WebSockets.
-* **OpenSSL** : For generating HTTPS certificates for secure communication.
+- **.NET Core 8** : The main framework for building the REST API services.
+- **Redis** : For in-memory state management across clusters.
+- **RabbitMQ** : Message broker for the event-driven architecture (EDA).
+- **Ocelot API Gateway** : For handling API routing across different services.
+- **Docker & Kubernetes** : Containerization and orchestration to deploy services in a scalable manner.
+- **SignalR** : Optional real-time communication using WebSockets.
+- **OpenSSL** : For generating HTTPS certificates for secure communication.
 
 ## openssl certificate generate for HTTPS:
 
