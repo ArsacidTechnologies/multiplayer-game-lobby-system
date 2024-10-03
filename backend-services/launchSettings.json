@@ -5,7 +5,8 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "lobbyservice": "StartDebugging",
-        "playerservice": "StartDebugging"
+        "playerservice": "StartDebugging",
+        "notificationservice": "StartDebugging"
       }
     }
   }

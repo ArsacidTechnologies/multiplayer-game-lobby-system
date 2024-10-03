@@ -13,7 +13,8 @@ services:
       timeout: 10s
       retries: 50
     networks:
-      - db
+      - rbmq
+
   redis:
     container_name: redis-mgls
     image: redis:latest
@@ -29,7 +30,9 @@ services:
       retries: 5
     networks:
       - db
+
   lobbyservice:
+    container_name: lobbyservice-mgls
     image: ${DOCKER_REGISTRY-}lobbyservice
     build:
       context: .
@@ -41,7 +44,11 @@ services:
         condition: service_healthy
     networks:
       - db
+      - gw
+      - rbmq
+
   playerservice:
+    container_name: playerservice-mgls
     image: ${DOCKER_REGISTRY-}playerservice
     build:
       context: .
@@ -53,8 +60,35 @@ services:
         condition: service_healthy
     networks:
       - db
+      - gw
+      - rbmq
+
+  gatewayservice:
+    container_name: gatewayservice-mgls
+    image: ${DOCKER_REGISTRY-}gatewayservice
+    build:
+      context: .
+      dockerfile: GatewayService/Dockerfile
+    networks:
+      - gw
+
+  notificationservice:
+    container_name: notificationservice-mgls
+    image: ${DOCKER_REGISTRY-}notificationservice
+    build:
+      context: .
+      dockerfile: NotificationService/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - gw
+      - rbmq
+
 networks:
   gw:
     driver: bridge
   db:
+    driver: bridge
+  rbmq:
     driver: bridge

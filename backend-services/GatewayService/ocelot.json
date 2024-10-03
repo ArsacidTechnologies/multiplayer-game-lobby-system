@@ -1,41 +1,41 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/player/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/Player/{everything}",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7008
+          "Host": "playerservice-mgls",
+          "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/player/{everything}",
+      "UpstreamPathTemplate": "/api/player/{everything}",
       "UpstreamHttpMethod": ["POST", "GET"],
       "Key": "PlayerService"
     },
     {
-      "DownstreamPathTemplate": "/api/lobby/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/Lobby/{everything}",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7006
+          "Host": "lobbyservice-mgls",
+          "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/lobby/{everything}",
+      "UpstreamPathTemplate": "/api/lobby/{everything}",
       "UpstreamHttpMethod": ["POST", "GET"],
       "Key": "LobbyService"
     },
     {
       "DownstreamPathTemplate": "/api/notification/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7253
+          "Host": "notificationservice-mgls",
+          "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/notification/{everything}",
+      "UpstreamPathTemplate": "/api/notification/{everything}",
       "UpstreamHttpMethod": ["POST", "GET"],
       "Key": "NotificationService"
     }
