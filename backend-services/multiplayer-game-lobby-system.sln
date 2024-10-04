@@ -17,7 +17,13 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService", "NotificationService\NotificationService.csproj", "{E0FE56FE-D770-48C6-BE2C-05B5E4DF784D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService", "GatewayService\GatewayService.csproj", "{E7906178-0D42-4F6B-B55F-8C4C9E5B1592}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatewayService", "GatewayService\GatewayService.csproj", "{E7906178-0D42-4F6B-B55F-8C4C9E5B1592}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameActionHandlerService", "GameActionHandlerService\GameActionHandlerService.csproj", "{9768BFDC-5651-4C1D-A6CD-10938A7C0AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "multiplayer-game-lobby-system.AppHost", "multiplayer-game-lobby-system.AppHost\multiplayer-game-lobby-system.AppHost.csproj", "{84AD9FC1-8230-4FCB-B0F4-E41102171004}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "multiplayer-game-lobby-system.ServiceDefaults", "multiplayer-game-lobby-system.ServiceDefaults\multiplayer-game-lobby-system.ServiceDefaults.csproj", "{59565BB9-4627-41C1-8B1A-0D1F9FF8F227}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +63,18 @@ Global
 		{E7906178-0D42-4F6B-B55F-8C4C9E5B1592}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7906178-0D42-4F6B-B55F-8C4C9E5B1592}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7906178-0D42-4F6B-B55F-8C4C9E5B1592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9768BFDC-5651-4C1D-A6CD-10938A7C0AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9768BFDC-5651-4C1D-A6CD-10938A7C0AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9768BFDC-5651-4C1D-A6CD-10938A7C0AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9768BFDC-5651-4C1D-A6CD-10938A7C0AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84AD9FC1-8230-4FCB-B0F4-E41102171004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84AD9FC1-8230-4FCB-B0F4-E41102171004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84AD9FC1-8230-4FCB-B0F4-E41102171004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84AD9FC1-8230-4FCB-B0F4-E41102171004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59565BB9-4627-41C1-8B1A-0D1F9FF8F227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59565BB9-4627-41C1-8B1A-0D1F9FF8F227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59565BB9-4627-41C1-8B1A-0D1F9FF8F227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59565BB9-4627-41C1-8B1A-0D1F9FF8F227}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
